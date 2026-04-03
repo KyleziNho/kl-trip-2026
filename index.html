@@ -179,61 +179,10 @@ section{scroll-margin-top:20px}
 /* ── SECTION DIVIDER ── */
 .section-divider{height:1px;max-width:200px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.4),transparent);opacity:.5}
 
-/* ── ROUTE MAP ── */
-.route-section{padding:4rem 0 2.5rem}
-
-/* Mobile: Vertical route */
-.route-visual{
-  margin-top:1.5rem;position:relative;
-}
-.route-path{
-  display:flex;flex-direction:column;align-items:stretch;
-  padding:0;
-}
-.route-stop{
-  display:flex;align-items:flex-start;gap:16px;
-  position:relative;padding-bottom:0;
-}
-.route-stop:last-child .route-stem{display:none}
-.route-marker{
-  display:flex;flex-direction:column;align-items:center;
-  flex-shrink:0;width:44px;position:relative;
-}
-.route-dot{
-  width:14px;height:14px;border-radius:50%;border:2.5px solid var(--gold);
-  background:var(--midnight);z-index:2;flex-shrink:0;
-  box-shadow:0 0 12px rgba(212,175,55,0.4);
-}
-.route-dot.active{background:rgba(212,175,55,0.3);width:18px;height:18px;border-width:3px}
-.route-stem{
-  width:2.5px;flex:1;min-height:44px;
-  background:linear-gradient(to bottom,var(--gold),rgba(212,175,55,0.2));
-  border-radius:2px;margin-top:2px;
-}
-.route-info{
-  flex:1;padding-bottom:28px;
-}
-.route-city-code{
-  font-family:'JetBrains Mono',monospace;font-size:1.3rem;
-  font-weight:600;color:var(--text-primary);letter-spacing:.04em;line-height:1;
-}
-.route-city-name{font-size:.75rem;color:var(--text-secondary);margin-top:3px}
-.route-city-date{
-  font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold);
-  margin-top:4px;letter-spacing:.04em;
-}
-.route-flight-tag{
-  display:inline-flex;align-items:center;gap:5px;
-  font-family:'JetBrains Mono',monospace;font-size:.6rem;
-  color:var(--text-muted);background:rgba(255,255,255,0.03);
-  padding:4px 10px;border-radius:8px;margin-top:8px;
-  border:1px solid rgba(255,255,255,0.05);letter-spacing:.04em;
-}
-.route-flight-tag span{font-size:.7rem}
 
 /* ── FLIGHT CARDS ── */
 .flights-section{padding:2.5rem 0 3rem}
-.flights-grid{display:flex;flex-direction:column;gap:14px;margin-top:1.5rem}
+.flights-grid{display:flex;flex-direction:column;gap:16px;margin-top:1.5rem}
 .flight-card{
   border-radius:var(--radius);overflow:hidden;position:relative;
   transition:transform .3s ease,box-shadow .3s ease;
@@ -288,6 +237,25 @@ section{scroll-margin-top:20px}
 .etihad .flight-line-plane{color:var(--gold)}
 .airasia .flight-line-plane{color:var(--airasia-red)}
 .flight-stops{font-size:.6rem;color:var(--text-muted);margin-top:3px}
+
+.flight-route-label{
+  font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;
+  padding:0 16px 10px;color:var(--text-primary);letter-spacing:-0.01em;
+}
+.flight-leg{padding:0 16px}
+.flight-leg-label{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;
+  color:var(--text-muted);margin-bottom:2px;text-transform:uppercase;
+}
+.flight-leg-label strong{color:var(--text-secondary);font-weight:600}
+.flight-leg-divider{
+  height:1px;margin:8px 16px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);
+}
+.flight-terminal-inline{
+  font-family:'JetBrains Mono',monospace;font-size:.55rem;
+  color:var(--text-muted);font-weight:500;
+}
 
 .flight-callout{
   display:flex;align-items:center;gap:8px;
@@ -662,17 +630,6 @@ section{scroll-margin-top:20px}
 /* ── DESKTOP ENHANCEMENTS ── */
 @media(min-width:640px){
   .container{padding:0 32px}
-  .route-path{flex-direction:row;align-items:center}
-  .route-stop{flex-direction:column;align-items:center;flex:1;padding-bottom:0}
-  .route-marker{flex-direction:row;width:auto;gap:0}
-  .route-dot{margin:0}
-  .route-stem{width:100%;height:2.5px;min-height:0;min-width:24px;margin:0 0 0 0;
-    background:linear-gradient(90deg,rgba(212,175,55,0.2),var(--gold),rgba(212,175,55,0.2));
-  }
-  .route-stop:last-child .route-stem{display:block;visibility:hidden}
-  .route-info{text-align:center;padding-bottom:0;padding-top:12px}
-  .route-flight-tag{display:none}
-  .route-connector-desktop{display:block}
   .carousel-slide{flex:0 0 50%;min-height:260px}
   .carousel-slide img{height:260px;border-radius:0}
   .carousel-hint{display:none}
@@ -740,85 +697,6 @@ section{scroll-margin-top:20px}
   </div>
 </section>
 
-<!-- ── ROUTE ── -->
-<section class="route-section" id="route-section">
-  <div class="container">
-    <p class="section-label fade-in">The Route</p>
-    <h2 class="section-title fade-in delay-1">Your Journey</h2>
-    <div class="route-visual fade-in delay-2">
-      <div class="route-path">
-
-        <div class="route-stop">
-          <div class="route-marker">
-            <div class="route-dot active"></div>
-            <div class="route-stem"></div>
-          </div>
-          <div class="route-info">
-            <div class="route-city-code">LHR</div>
-            <div class="route-city-name">London Heathrow</div>
-            <div class="route-city-date">Jun 10</div>
-          </div>
-        </div>
-
-        <div class="route-stop">
-          <div class="route-marker">
-            <div class="route-dot"></div>
-            <div class="route-stem"></div>
-          </div>
-          <div class="route-info">
-            <div class="route-city-code">KUL</div>
-            <div class="route-city-name">Kuala Lumpur</div>
-            <div class="route-city-date">Jun 11 – 14</div>
-            <div class="route-flight-tag"><span>&#9992;</span> Etihad &middot; 15h 55m</div>
-          </div>
-        </div>
-
-        <div class="route-stop">
-          <div class="route-marker">
-            <div class="route-dot"></div>
-            <div class="route-stem"></div>
-          </div>
-          <div class="route-info">
-            <div class="route-city-code">CKG</div>
-            <div class="route-city-name">Chongqing</div>
-            <div class="route-city-date">Jun 14 – 22</div>
-            <div class="route-flight-tag"><span>&#9992;</span> AirAsia &middot; 4h 45m</div>
-          </div>
-        </div>
-
-        <div class="route-stop">
-          <div class="route-marker">
-            <div class="route-dot"></div>
-            <div class="route-stem"></div>
-          </div>
-          <div class="route-info">
-            <div class="route-city-code">KUL</div>
-            <div class="route-city-name">Kuala Lumpur</div>
-            <div class="route-city-date">Jun 22 – Jul 3</div>
-            <div class="route-flight-tag"><span>&#9992;</span> AirAsia &middot; 4h 45m</div>
-          </div>
-        </div>
-
-        <div class="route-stop">
-          <div class="route-marker">
-            <div class="route-dot active"></div>
-            <div class="route-stem"></div>
-          </div>
-          <div class="route-info">
-            <div class="route-city-code">LHR</div>
-            <div class="route-city-name">London Heathrow</div>
-            <div class="route-city-date">Jul 4</div>
-            <div class="route-flight-tag"><span>&#9992;</span> Etihad &middot; 16h 5m</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
 <!-- ── FLIGHTS ── -->
 <section class="flights-section" id="flights-section">
   <div class="container">
@@ -826,73 +704,89 @@ section{scroll-margin-top:20px}
     <h2 class="section-title fade-in delay-1">Getting There &amp; Back</h2>
     <div class="flights-grid">
 
+      <!-- Etihad Return: LHR ↔ KUL -->
       <div class="flight-card etihad fade-in delay-2">
-        <div class="flight-card-header">
-          <div class="flight-airline"><img class="flight-airline-logo" src="etihad-logo.png" alt="Etihad Airways"></div>
-          <span class="flight-badge">Outbound</span>
-        </div>
-        <div class="flight-card-body">
-          <div class="flight-dep"><div class="flight-time">20:50</div><div class="flight-airport">London Heathrow</div><div class="flight-terminal">Terminal 4</div></div>
-          <div class="flight-middle">
-            <div class="flight-duration">15h 55m</div>
-            <div class="flight-line"><div class="flight-line-dot"></div><div class="flight-line-seg"></div><div class="flight-line-plane">&#9992;</div><div class="flight-line-seg"></div><div class="flight-line-dot"></div></div>
-            <div class="flight-stops">1h 40m in Abu Dhabi</div>
-          </div>
-          <div class="flight-arr"><div class="flight-time">19:45<sup>+1</sup></div><div class="flight-airport">Kuala Lumpur</div><div class="flight-terminal">Terminal 1</div></div>
-        </div>
-        <div class="flight-card-footer"><div class="flight-date"><strong>Jun 10</strong> &rarr; Jun 11</div><div class="flight-price"><div class="flight-price-amount">&pound;412</div><div class="flight-price-label">return per person</div></div></div>
-      </div>
-
-      <div class="flight-card airasia fade-in delay-2">
-        <div class="flight-card-header">
-          <div class="flight-airline"><img class="flight-airline-logo" src="airasia-logo.png" alt="AirAsia X"></div>
-          <span class="flight-badge">KL &rarr; China</span>
-        </div>
-        <div class="flight-card-body">
-          <div class="flight-dep"><div class="flight-time">20:00</div><div class="flight-airport">Kuala Lumpur</div><div class="flight-terminal">Terminal 2</div></div>
-          <div class="flight-middle">
-            <div class="flight-duration">4h 45m</div>
-            <div class="flight-line"><div class="flight-line-dot"></div><div class="flight-line-seg"></div><div class="flight-line-plane">&#9992;</div><div class="flight-line-seg"></div><div class="flight-line-dot"></div></div>
-            <div class="flight-stops">Direct</div>
-          </div>
-          <div class="flight-arr"><div class="flight-time">00:45<sup>+1</sup></div><div class="flight-airport">Chongqing</div><div class="flight-terminal">Terminal 3</div></div>
-        </div>
-        <div class="flight-callout"><span class="flight-callout-icon">&#128075;</span> Kyle will be on this flight with you!</div>
-        <div class="flight-card-footer"><div class="flight-date"><strong>Jun 14</strong> &rarr; Jun 15</div><div class="flight-price"><div class="flight-price-amount">&pound;155</div><div class="flight-price-label">return per person</div></div></div>
-      </div>
-
-      <div class="flight-card airasia fade-in delay-3">
-        <div class="flight-card-header">
-          <div class="flight-airline"><img class="flight-airline-logo" src="airasia-logo.png" alt="AirAsia X"></div>
-          <span class="flight-badge">China &rarr; KL</span>
-        </div>
-        <div class="flight-card-body">
-          <div class="flight-dep"><div class="flight-time">02:00</div><div class="flight-airport">Chongqing</div><div class="flight-terminal">Terminal 3</div></div>
-          <div class="flight-middle">
-            <div class="flight-duration">4h 45m</div>
-            <div class="flight-line"><div class="flight-line-dot"></div><div class="flight-line-seg"></div><div class="flight-line-plane">&#9992;</div><div class="flight-line-seg"></div><div class="flight-line-dot"></div></div>
-            <div class="flight-stops">Direct</div>
-          </div>
-          <div class="flight-arr"><div class="flight-time">06:45</div><div class="flight-airport">Kuala Lumpur</div><div class="flight-terminal">Terminal 2</div></div>
-        </div>
-        <div class="flight-card-footer"><div class="flight-date"><strong>Jun 22</strong></div><div class="flight-price"><div class="flight-price-amount">&pound;148</div><div class="flight-price-label">return per person</div></div></div>
-      </div>
-
-      <div class="flight-card etihad fade-in delay-4">
         <div class="flight-card-header">
           <div class="flight-airline"><img class="flight-airline-logo" src="etihad-logo.png" alt="Etihad Airways"></div>
           <span class="flight-badge">Return</span>
         </div>
-        <div class="flight-card-body">
-          <div class="flight-dep"><div class="flight-time">21:55</div><div class="flight-airport">Kuala Lumpur</div><div class="flight-terminal">Terminal 1</div></div>
-          <div class="flight-middle">
-            <div class="flight-duration">16h 5m</div>
-            <div class="flight-line"><div class="flight-line-dot"></div><div class="flight-line-seg"></div><div class="flight-line-plane">&#9992;</div><div class="flight-line-seg"></div><div class="flight-line-dot"></div></div>
-            <div class="flight-stops">1h 30m in Abu Dhabi</div>
+        <div class="flight-route-label">London &harr; Kuala Lumpur</div>
+
+        <div class="flight-leg">
+          <div class="flight-leg-label">Outbound &middot; <strong>Jun 10</strong></div>
+          <div class="flight-card-body">
+            <div class="flight-dep"><div class="flight-time">20:50</div><div class="flight-airport">LHR <span class="flight-terminal-inline">T4</span></div></div>
+            <div class="flight-middle">
+              <div class="flight-duration">15h 55m</div>
+              <div class="flight-line"><div class="flight-line-dot"></div><div class="flight-line-seg"></div><div class="flight-line-plane">&#9992;</div><div class="flight-line-seg"></div><div class="flight-line-dot"></div></div>
+              <div class="flight-stops">via Abu Dhabi</div>
+            </div>
+            <div class="flight-arr"><div class="flight-time">19:45<sup>+1</sup></div><div class="flight-airport">KUL <span class="flight-terminal-inline">T1</span></div></div>
           </div>
-          <div class="flight-arr"><div class="flight-time">07:00<sup>+1</sup></div><div class="flight-airport">London Heathrow</div><div class="flight-terminal">Terminal 4</div></div>
         </div>
-        <div class="flight-card-footer"><div class="flight-date"><strong>Jul 3</strong> &rarr; Jul 4</div><div class="flight-price"><div class="flight-price-amount">&pound;425</div><div class="flight-price-label">return per person</div></div></div>
+
+        <div class="flight-leg-divider"></div>
+
+        <div class="flight-leg">
+          <div class="flight-leg-label">Return &middot; <strong>Jul 3</strong></div>
+          <div class="flight-card-body">
+            <div class="flight-dep"><div class="flight-time">21:55</div><div class="flight-airport">KUL <span class="flight-terminal-inline">T1</span></div></div>
+            <div class="flight-middle">
+              <div class="flight-duration">16h 5m</div>
+              <div class="flight-line"><div class="flight-line-dot"></div><div class="flight-line-seg"></div><div class="flight-line-plane">&#9992;</div><div class="flight-line-seg"></div><div class="flight-line-dot"></div></div>
+              <div class="flight-stops">via Abu Dhabi</div>
+            </div>
+            <div class="flight-arr"><div class="flight-time">07:00<sup>+1</sup></div><div class="flight-airport">LHR <span class="flight-terminal-inline">T4</span></div></div>
+          </div>
+        </div>
+
+        <div class="flight-card-footer">
+          <div class="flight-date">23 days between flights</div>
+          <div class="flight-price"><div class="flight-price-amount">&pound;425</div><div class="flight-price-label">return per person</div></div>
+        </div>
+      </div>
+
+      <!-- AirAsia Return: KUL ↔ CKG -->
+      <div class="flight-card airasia fade-in delay-3">
+        <div class="flight-card-header">
+          <div class="flight-airline"><img class="flight-airline-logo" src="airasia-logo.png" alt="AirAsia X"></div>
+          <span class="flight-badge">Return</span>
+        </div>
+        <div class="flight-route-label">Kuala Lumpur &harr; Chongqing</div>
+
+        <div class="flight-leg">
+          <div class="flight-leg-label">Outbound &middot; <strong>Jun 14</strong></div>
+          <div class="flight-card-body">
+            <div class="flight-dep"><div class="flight-time">20:00</div><div class="flight-airport">KUL <span class="flight-terminal-inline">T2</span></div></div>
+            <div class="flight-middle">
+              <div class="flight-duration">4h 45m</div>
+              <div class="flight-line"><div class="flight-line-dot"></div><div class="flight-line-seg"></div><div class="flight-line-plane">&#9992;</div><div class="flight-line-seg"></div><div class="flight-line-dot"></div></div>
+              <div class="flight-stops">Direct</div>
+            </div>
+            <div class="flight-arr"><div class="flight-time">00:45<sup>+1</sup></div><div class="flight-airport">CKG <span class="flight-terminal-inline">T3</span></div></div>
+          </div>
+        </div>
+
+        <div class="flight-leg-divider"></div>
+
+        <div class="flight-leg">
+          <div class="flight-leg-label">Return &middot; <strong>Jun 22</strong></div>
+          <div class="flight-card-body">
+            <div class="flight-dep"><div class="flight-time">02:00</div><div class="flight-airport">CKG <span class="flight-terminal-inline">T3</span></div></div>
+            <div class="flight-middle">
+              <div class="flight-duration">4h 45m</div>
+              <div class="flight-line"><div class="flight-line-dot"></div><div class="flight-line-seg"></div><div class="flight-line-plane">&#9992;</div><div class="flight-line-seg"></div><div class="flight-line-dot"></div></div>
+              <div class="flight-stops">Direct</div>
+            </div>
+            <div class="flight-arr"><div class="flight-time">06:45</div><div class="flight-airport">KUL <span class="flight-terminal-inline">T2</span></div></div>
+          </div>
+        </div>
+
+        <div class="flight-callout"><span class="flight-callout-icon">&#128075;</span> Kyle will be on these flights with you!</div>
+        <div class="flight-card-footer">
+          <div class="flight-date">8 days in Chongqing</div>
+          <div class="flight-price"><div class="flight-price-amount">&pound;148</div><div class="flight-price-label">return per person</div></div>
+        </div>
       </div>
 
     </div>
@@ -1051,11 +945,11 @@ section{scroll-margin-top:20px}
         <div class="costs-breakdown">
           <h3>Per Person</h3>
           <div class="cost-item">
-            <div class="cost-item-left"><div class="cost-item-icon cost-icon-flight">&#9992;</div><div><div class="cost-item-label">Etihad LHR &harr; KUL</div><div class="cost-item-sublabel">Return flights via Abu Dhabi</div></div></div>
+            <div class="cost-item-left"><div class="cost-item-icon cost-icon-flight">&#9992;</div><div><div class="cost-item-label">Etihad LHR &harr; KUL</div><div class="cost-item-sublabel">Return via Abu Dhabi</div></div></div>
             <div class="cost-item-amount">&pound;425</div>
           </div>
           <div class="cost-item">
-            <div class="cost-item-left"><div class="cost-item-icon cost-icon-flight">&#9992;</div><div><div class="cost-item-label">AirAsia KUL &harr; CKG</div><div class="cost-item-sublabel">Return flights, direct</div></div></div>
+            <div class="cost-item-left"><div class="cost-item-icon cost-icon-flight">&#9992;</div><div><div class="cost-item-label">AirAsia KUL &harr; CKG</div><div class="cost-item-sublabel">Return, direct</div></div></div>
             <div class="cost-item-amount">&pound;148</div>
           </div>
           <div class="cost-item">
@@ -1168,7 +1062,7 @@ function scrollToSection(id) {
 
 // ── Active nav tracking
 const navItems = document.querySelectorAll('.nav-item');
-const sections = ['hero', 'flights-section', 'accom-section', 'timeline-section', 'costs-section'];
+const sectionIds = ['hero', 'flights-section', 'accom-section', 'timeline-section', 'costs-section'];
 
 const navObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -1180,7 +1074,7 @@ const navObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15, rootMargin: '-10% 0px -60% 0px' });
 
-sections.forEach(id => {
+sectionIds.forEach(id => {
   const el = document.getElementById(id);
   if (el) navObs.observe(el);
 });
